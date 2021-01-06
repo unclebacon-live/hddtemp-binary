@@ -157,7 +157,7 @@ hddtemp_SOURCES = ata.c ata.h \
 		  scsi.c scsi.h \
 		  scsicmds.c scsicmds.h \
 		  backtrace.c backtrace.h \
-		  utf8.c utf8.h
+		  utf8.c utf8.h nvme.c
 
 
 hddtemp_CFLAGS = -Wall -W -rdynamic
@@ -180,7 +180,7 @@ am_hddtemp_OBJECTS = hddtemp-ata.$(OBJEXT) hddtemp-atacmds.$(OBJEXT) \
 	hddtemp-hddtemp.$(OBJEXT) hddtemp-sata.$(OBJEXT) \
 	hddtemp-satacmds.$(OBJEXT) hddtemp-scsi.$(OBJEXT) \
 	hddtemp-scsicmds.$(OBJEXT) hddtemp-backtrace.$(OBJEXT) \
-	hddtemp-utf8.$(OBJEXT)
+	hddtemp-utf8.$(OBJEXT) hddtemp-nvme.$(OBJEXT)
 hddtemp_OBJECTS = $(am_hddtemp_OBJECTS)
 hddtemp_DEPENDENCIES =
 hddtemp_LDFLAGS =
@@ -195,6 +195,7 @@ am__depfiles_maybe = depfiles
 @AMDEP_TRUE@	./$(DEPDIR)/hddtemp-db.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/hddtemp-hddtemp.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/hddtemp-sata.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/hddtemp-nvme.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/hddtemp-satacmds.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/hddtemp-scsi.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/hddtemp-scsicmds.Po \
@@ -257,6 +258,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/hddtemp-db.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/hddtemp-hddtemp.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/hddtemp-sata.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/hddtemp-nvme.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/hddtemp-satacmds.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/hddtemp-scsi.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/hddtemp-scsicmds.Po@am__quote@
@@ -415,6 +417,28 @@ hddtemp-sata.obj: sata.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/hddtemp-sata.Po' tmpdepfile='$(DEPDIR)/hddtemp-sata.TPo' @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(hddtemp_CFLAGS) $(CFLAGS) -c -o hddtemp-sata.obj `if test -f 'sata.c'; then $(CYGPATH_W) 'sata.c'; else $(CYGPATH_W) '$(srcdir)/sata.c'; fi`
+
+hddtemp-nvme.o: nvme.c
+@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(hddtemp_CFLAGS) $(CFLAGS) -MT hddtemp-nvme.o -MD -MP -MF "$(DEPDIR)/hddtemp-nvme.Tpo" \
+@am__fastdepCC_TRUE@	  -c -o hddtemp-nvme.o `test -f 'nvme.c' || echo '$(srcdir)/'`nvme.c; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/hddtemp-nvme.Tpo" "$(DEPDIR)/hddtemp-nvme.Po"; \
+@am__fastdepCC_TRUE@	else rm -f "$(DEPDIR)/hddtemp-nvme.Tpo"; exit 1; \
+@am__fastdepCC_TRUE@	fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='nvme.c' object='hddtemp-nvme.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/hddtemp-nvme.Po' tmpdepfile='$(DEPDIR)/hddtemp-nvme.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(hddtemp_CFLAGS) $(CFLAGS) -c -o hddtemp-nvme.o `test -f 'nvme.c' || echo '$(srcdir)/'`nvme.c
+
+hddtemp-nvme.obj: nvme.c
+@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(hddtemp_CFLAGS) $(CFLAGS) -MT hddtemp-nvme.obj -MD -MP -MF "$(DEPDIR)/hddtemp-nvme.Tpo" \
+@am__fastdepCC_TRUE@	  -c -o hddtemp-nvme.obj `if test -f 'nvme.c'; then $(CYGPATH_W) 'nvme.c'; else $(CYGPATH_W) '$(srcdir)/nvme.c'; fi`; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/hddtemp-nvme.Tpo" "$(DEPDIR)/hddtemp-nvme.Po"; \
+@am__fastdepCC_TRUE@	else rm -f "$(DEPDIR)/hddtemp-nvme.Tpo"; exit 1; \
+@am__fastdepCC_TRUE@	fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='nvme.c' object='hddtemp-nvme.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/hddtemp-nvme.Po' tmpdepfile='$(DEPDIR)/hddtemp-nvme.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(hddtemp_CFLAGS) $(CFLAGS) -c -o hddtemp-nvme.obj `if test -f 'nvme.c'; then $(CYGPATH_W) 'nvme.c'; else $(CYGPATH_W) '$(srcdir)/nvme.c'; fi`
 
 hddtemp-satacmds.o: satacmds.c
 @am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(hddtemp_CFLAGS) $(CFLAGS) -MT hddtemp-satacmds.o -MD -MP -MF "$(DEPDIR)/hddtemp-satacmds.Tpo" \
