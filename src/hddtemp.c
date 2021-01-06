@@ -213,11 +213,23 @@ static void display_temperature(struct disk *dsk) {
     break;
   case GETTEMP_DRIVE_SLEEP:
 
+    if (! numeric)
+       printf("%s: %s: %d%s%c\n",
+              dsk->drive,
+              dsk->model,
+	      value_to_unit(dsk),
+              degree,
+	      get_unit(dsk)
+	      );
+    else
+       printf("%d\n", value_to_unit(dsk));
+
+  /*
     if (numeric && quiet)
       printf("0\n");      
     else
       fprintf(stderr, _("%s: %s: drive is sleeping\n"), dsk->drive, dsk->model);
-
+  */
     break;
   case GETTEMP_NOSENSOR:
     if (numeric && quiet)
